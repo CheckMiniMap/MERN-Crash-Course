@@ -1,3 +1,4 @@
+// Tutorial: https://www.youtube.com/watch?v=O3BUHwfHf84&t=703s
 // const express = require('express'); <-- common way of importing express
 import express from "express"; // Modern way of importing express with package.json having "type": "module"
 import dotenv from "dotenv";
@@ -16,3 +17,4 @@ app.listen(5000, () => {
   connectDB();
   console.log("Server started at http://localhost:5000");
 });
+
