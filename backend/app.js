@@ -1,14 +1,18 @@
 // const express = require('express'); <-- common way of importing express
-import express from 'express'; // Modern way of importing express with package.json having "type": "module"
+import express from "express"; // Modern way of importing express with package.json having "type": "module"
+import dotenv from "dotenv";
+import { connectDB } from './config/db.js';
+import productRoutes from "./routes/product.route.js";
+
+dotenv.config();
 
 const app = express();
 
-app.get("/products", (req, res) => {
-  res.send("Server is ready");
-})
+app.use(express.json()); // allows us to accept JSON in the req.body
+
+app.use("/api/products", productRoutes);
 
 app.listen(5000, () => {
+  connectDB();
   console.log("Server started at http://localhost:5000");
-})
-
-// pwd: Wmr3EsShRj9iPyEZ
+});
