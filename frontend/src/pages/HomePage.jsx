@@ -1,12 +1,11 @@
-// rafce will auto-generate the file's basic code.
-import React from 'react'
+import React from "react";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen text-3xl font-bold">
       Home
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 import CreatePage from "./pages/CreatePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -6,14 +5,16 @@ import Navbar from "./components/Navbar.jsx";
 
 function App() {
   return (
-    <Box minH={"100vh"}>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-800 text-black dark:text-white">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreatePage />} />
-      </Routes>
-    </Box>
-  )
+      <div className="mx-4 sm:mx-8">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/create" element={<CreatePage />} />
+        </Routes>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
