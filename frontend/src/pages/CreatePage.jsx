@@ -1,6 +1,6 @@
 import { Container } from "postcss";
 import React, { useState } from "react";
-import { useProductStore } from "../store/product";
+import { useProductStore } from "@/store/product";
 import { useToast } from "@/utils/ToastUtils";
 
 const CreatePage = () => {
@@ -10,18 +10,18 @@ const CreatePage = () => {
     image: "",
   });
 
-  const { toast, showToast, ToastComponent } = useToast(); // Get the toast state & functions
+  const { showToast, ToastComponent } = useToast(); // Get the toast state & functions
   const { createProduct } = useProductStore();
 
   const handleAddProduct = async () => {
     const { success, message } = await createProduct(newProduct);
-    if (!success) {
-      console.log(`${success} - ${message}`);
-      showToast(message, "error"); // Show error toast
-    } else {
-      console.log(`${success} - ${message}`);
+    if (success) {
       showToast(message, "success"); // Show success toast
+      
+    } else {
+      showToast(message, "error"); // Show error toast
     }
+    setNewProduct({ name: "", price: "", image: "" });
   };
 
 
@@ -61,7 +61,7 @@ const CreatePage = () => {
       </div>
 
       {/* Show Toast Component */}
-      {ToastComponent}
+      {ToastComponent()}
     </>
   );
 };

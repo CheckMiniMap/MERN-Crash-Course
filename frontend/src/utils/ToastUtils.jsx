@@ -1,16 +1,19 @@
 import { useState } from "react";
-import Toast from "@/utils/Toast"; // Ensure the correct path
+import Toast from "./Toast"; 
 
 // Hook to handle showing and hiding toasts
 export const useToast = () => {
   const [toast, setToast] = useState(null);
 
   // Function to trigger toast
-  const showToast = (message, type) => {
+  const showToast = (message, type = "success") => {
     setToast({ message, type });
-    setTimeout(() => setToast(null), 4000); // Auto-hide after 4 seconds
+
+    // Auto-hide after 4s
+    setTimeout(() => setToast(null), 4000);
   };
 
+  // Return the toast state, function, and JSX Component
   return {
     toast,
     showToast,
