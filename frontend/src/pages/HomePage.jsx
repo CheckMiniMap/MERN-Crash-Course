@@ -2,6 +2,7 @@ import { Container } from "postcss";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useProductStore } from "@/store/product";
+import ProductCard from "@/components/ProductCard";
 
 const HomePage = () => {
   const { fetchProducts, products } = useProductStore();
@@ -19,18 +20,20 @@ const HomePage = () => {
         </h1>
 
         <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full">
-          {products.map((product) => (
-            
-          ))}
+          { products.map((product) => (
+            <ProductCard product={product} />
+          )) }
           <div className="col-span-1"></div>
         </div>
 
-        <h2 className="text-lg sm:text-xl text-center font-bold text-gray-500">
+        {products.length === 0 && (
+          <h2 className="text-lg sm:text-xl text-center font-bold text-gray-500 dark:text-white">
           No products found 😢 
           <Link to={"/create"}>
             <span className="text-blue-500 hover:underline">Create a product</span>
           </Link>
         </h2>
+        )}
       </div>
     </div>
   );

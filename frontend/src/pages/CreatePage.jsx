@@ -17,11 +17,10 @@ const CreatePage = () => {
     const { success, message } = await createProduct(newProduct);
     if (success) {
       showToast(message, "success"); // Show success toast
-      
+      setNewProduct({ name: "", price: "", image: "" });
     } else {
       showToast(message, "error"); // Show error toast
     }
-    setNewProduct({ name: "", price: "", image: "" });
   };
 
 
