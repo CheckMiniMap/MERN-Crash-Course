@@ -52,7 +52,7 @@ const CreatePage = () => {
                 name="image" 
                 value={newProduct.image} 
                 onChange={(e) => setNewProduct({...newProduct, image: e.target.value })}
-                className="rounded-lg p-2  border-2 border-gray-200 dark:border-gray-600"
+                className="rounded-lg p-2 border-2 border-gray-200 dark:border-gray-600"
               />
               <button className="rounded-lg p-2 bg-blue-700 dark:bg-blue-500 text-white hover:bg-blue-600 transition duration-200" onClick={handleAddProduct}>Add Product</button>
             </div>

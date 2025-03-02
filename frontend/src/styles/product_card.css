@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer components {
+  .tdata{
+    @apply px-2 text-lg;
+  }
+}
