@@ -19,7 +19,12 @@ app.use(express.json()); // allows us to accept JSON in the req.body
 // Prefixing all the routes with /api/products
 app.use("/api/products", productRoutes);
 
-if (process.env.NODE_ENV === "production") {}
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   connectDB();
